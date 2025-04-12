@@ -1,0 +1,109 @@
+﻿<Page x:Class="AppWPF.pagesUser.ContactsManagement"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppWPF.pagesUser"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      Title="ContactsManagement">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <WrapPanel Grid.Row="0" Margin="10 10 10 0" Grid.ColumnSpan="2">
+            <Label Content="Search by phone or name"/>
+            <TextBox x:Name="txtSearchNameOrPhone" Width="180"/>
+            <Button x:Name="btnSearch" Content="Search" Margin="5 0 0 0" Width="100" Click="btnSearch_Click"/>
+            <Label Content=" Address" Margin="300 0 0 0"/>
+            <TextBox x:Name="txtSearchAddress" Width="260" SelectionChanged="searchAddress_SelectionChanged"/>
+            <Button x:Name="btnClearn" Content="Clean" Margin="175 0 0 0" Background="Red" Width="70" Click="btnClearn_Click"/>
+        </WrapPanel>
+        <DataGrid Name="dgContacts" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Row="1" Margin="10" Grid.ColumnSpan="2" SelectionChanged="dgData_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="STT" Binding="{Binding STT, Mode=OneWay}" Width="*"/>
+                <DataGridTextColumn Header="Contact" Binding="{Binding FullName, Mode=OneWay}" Width="*"/>
+                <DataGridTextColumn Header="Phone" Binding="{Binding Phone, Mode=OneWay}" Width="*"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email, Mode=OneWay}" Width="*"/>
+                <DataGridTextColumn Header="Address" Binding="{Binding Address, Mode=OneWay}" Width="*"/>
+                <DataGridTemplateColumn Header="Action" Width="50">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnLike" Click="btnLike_Click">
+                                <iconPacks:PackIconMaterial Kind="Heart" Width="16" Height="16"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Add Group" Width="70">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnAddGroup" Click="btnAddGroup_Click">
+                                <iconPacks:PackIconMaterial Kind="Group" Width="16" Height="16"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!-- Cột 1 -->
+        <StackPanel Grid.Column="0" HorizontalAlignment="Stretch" Grid.Row="2" Margin="120 10 10 10">
+            <WrapPanel>
+                <Label Content="Contact ID" VerticalAlignment="Center" Width="120" FontSize="17"/>
+                <TextBlock x:Name="txbContactID" Width="250" Margin="10 0 0 0" FontSize="19"/>
+            </WrapPanel>
+            <WrapPanel Margin="0 10 0 10">
+                <Label Content="Full Name" VerticalAlignment="Center" Width="100" FontSize="17"/>
+                <TextBox x:Name="txtName" Width="250" Margin="30 0 0 0"/>
+            </WrapPanel>
+            <WrapPanel Margin="0 10 0 10">
+                <Label Content="Phone" VerticalAlignment="Center" Width="100" FontSize="17"/>
+                <TextBox x:Name="txtPhone" Width="250" Margin="30 0 0 0"/>
+            </WrapPanel>
+            <WrapPanel Margin="0 10 0 10">
+                <Label Content="Email" VerticalAlignment="Center" Width="100" FontSize="17"/>
+                <TextBox x:Name="txtEmail" Width="250" Margin="30 0 0 0"/>
+            </WrapPanel>
+            
+        </StackPanel>
+
+        <!-- Cột 2 -->
+        <StackPanel Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="2" Margin="100 45 0 0">
+            <WrapPanel Margin="0 10 0 10">
+                <Label Content="Birthday" VerticalAlignment="Center" Width="100" FontSize="17"/>
+                <DatePicker x:Name="dpBirth" Width="250" Margin="40 0 0 0"/>
+            </WrapPanel>
+            <WrapPanel Margin="0 10 0 10">
+                <Label Content="Address" VerticalAlignment="Center" Width="100" FontSize="17"/>
+                <TextBox x:Name="txtAddress" Width="250" Margin="30 0 0 0" />
+            </WrapPanel>
+            <WrapPanel>
+                <Label Content="Relationship" VerticalAlignment="Center" Width="130" FontSize="17"/>
+                <TextBox x:Name="txtRelationship" Width="250"/>
+            </WrapPanel>
+            <!--<WrapPanel Margin="0 10 0 10">
+                <Label Content="Create Contact" VerticalAlignment="Center" Width="140" FontSize="17"/>
+                <TextBox x:Name="txtCreate" Width="250" IsReadOnly="True"/>
+            </WrapPanel>
+            <WrapPanel Margin="0 10 0 10">
+                <Label Content="Update Contact" VerticalAlignment="Center" Width="140" FontSize="17"/>
+                <TextBox x:Name="txtUpdate" Width="250" IsReadOnly="True"/>
+            </WrapPanel>-->
+        </StackPanel>
+        <WrapPanel Grid.Row="3" Margin="10" Grid.ColumnSpan="2">
+            <Button x:Name="btnAdd" Content="Add Contact" Width="200" Height="36" Background="Green" FontWeight="Black" Click="btnAdd_Click"/>
+            <Button x:Name="btnUpdate" Content="Update Contact" Margin="180 0 0 0" Width="200" Background="Green" FontWeight="Black" Click="btnUpdate_Click"/>
+            <Button x:Name="btnDeleted" Content="Deleted Contact" Margin="150 0 0 0" Width="200" Background="Red" FontWeight="Black" Click="btnDeleted_Click"/>
+            <Button x:Name="btnRefresh" Content="Return Contact" Margin="160 0 0 0" Width="200" Background="Red" FontWeight="Black" Click="btnReturn_Click"/>
+        </WrapPanel>
+    </Grid>
+</Page>

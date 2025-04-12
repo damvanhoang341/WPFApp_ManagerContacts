@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="AppWPF.components.SidebarUser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AppWPF.components"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="800"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks">
+    <Grid>
+        <StackPanel Background="#168ab9">
+            <!-- Phần Avatar và Thông tin người dùng -->
+            <StackPanel Margin="20 20 20 0" Orientation="Horizontal" >
+                <Ellipse Width="60" Height="60" Margin="0,0,10,0">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="D:\Semester 7\PRN212_FA25\Project_WebQuanLyDanhBa\WPFApp_QuanLyDanhBa\WPFApp_QuanLyDanhBa\WPFApp\AppWPF\asset\user.jpg"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <StackPanel VerticalAlignment="Center" Margin="10 -30 0 0">
+                    <TextBlock Name="tblName" Text="{Binding userName}" Foreground="White" FontSize="16" FontWeight="Bold"/>
+                    <TextBlock Text="User, France" Foreground="White" FontSize="12"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Các nút điều hướng -->
+            <StackPanel Background="Transparent" HorizontalAlignment="Left" Margin="20,100,0,10">
+                
+                <Button Name="btnContactsManagement" Background="Transparent" Width="200" HorizontalContentAlignment="Left" BorderThickness="0" Margin="0 0 0 30" Click="btnContactsManagement_Click" >
+                    <StackPanel Orientation="Horizontal">
+                        <iconPacks:PackIconMaterial Width="20" Height="20" Margin="10,0,10,10" Kind="Contacts" Foreground="White"/>
+                        <TextBlock Text="Contacts" VerticalAlignment="Center" FontSize="14" Foreground="White"/>
+                    </StackPanel>
+                </Button>
+                <Button Name="btnFavoriteContactsManagement" Background="Transparent" Width="200" HorizontalContentAlignment="Left" BorderThickness="0" Margin="0 0 0 30" Click="btnFavoriteContactsManagement_Click" >
+                    <StackPanel Orientation="Horizontal">
+                        <iconPacks:PackIconMaterial Width="20" Height="20" Margin="10,0,10,10" Kind="Account" Foreground="White"/>
+                        <TextBlock Text="Favorite Contacts" VerticalAlignment="Center" FontSize="14" Foreground="White"/>
+                    </StackPanel>
+                </Button>
+                <Button Name="btnDashboard" Background="Transparent" Width="200" HorizontalContentAlignment="Left" BorderThickness="0" Margin="0 0 0 30" Click="btnDashboard_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <iconPacks:PackIconMaterial Width="20" Height="20" Margin="10,0,10,10" Kind="ViewDashboard" Foreground="White"/>
+                        <TextBlock Text="Group" VerticalAlignment="Center" FontSize="14" Foreground="White"/>
+                    </StackPanel>
+                </Button>
+                <Button Name="btnNotificationManagement" Background="Transparent" Width="200" HorizontalContentAlignment="Left" BorderThickness="0" Margin="0 0 0 30" Click="btnNotificationManagement_Click" >
+                    <StackPanel Orientation="Horizontal">
+                        <iconPacks:PackIconMaterial Width="20" Height="20" Margin="10,0,10,10" Kind="NotificationClearAll" Foreground="White"/>
+                        <TextBlock Text="Notifications" VerticalAlignment="Center" FontSize="14" Foreground="White"/>
+                    </StackPanel>
+                </Button>
+                <Button Name="btnProfile" Background="Transparent" Width="200" HorizontalContentAlignment="Left" BorderThickness="0" Margin="0 0 0 30" Click="btnProfile_Click" >
+                    <StackPanel Orientation="Horizontal">
+                        <iconPacks:PackIconMaterial Width="20" Height="20" Margin="10,0,10,10" Kind="FaceManProfile" Foreground="White"/>
+                        <TextBlock Text="Profile" VerticalAlignment="Center" FontSize="14" Foreground="White"/>
+                    </StackPanel>
+                </Button>
+                <Button Name="btnLogOut" Background="Transparent" Width="200" HorizontalContentAlignment="Left" BorderThickness="0" Margin="0 250 0 30" Click="btnLogOut_Click" >
+                    <StackPanel Orientation="Horizontal">
+                        <iconPacks:PackIconMaterial Width="20" Height="20" Margin="10,0,10,0" Kind="Login" Foreground="White"/>
+                        <TextBlock Text="LogOut" VerticalAlignment="Center" FontSize="14" Foreground="White"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

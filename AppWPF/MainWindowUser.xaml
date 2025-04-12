@@ -1,0 +1,32 @@
+﻿<Window x:Class="AppWPF.MainWindowUser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppWPF.components"
+        mc:Ignorable="d"
+        Title="MainWindowUser" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+       
+
+        <!-- SidebarUser -->
+        <local:SidebarUser x:Name="SidebarUser" Grid.Column="0"  
+                           DashboardClicked="SidebarUser_DashboardClicked"
+                           ContactsManagementClicked="SidebarUser_ContactsManagementClicked"
+                           FavoriteContactsManagementClicked="SidebarUser_FavoriteContactsManagementClicked"
+                           NotificationManagementClicked="SidebarUser_NotificationManagementClicked"
+                           ProfileClicked="SidebarUser_ProfileClicked"
+                           LogOutClick="SidebarUser_LogOutClicked"/>
+
+        <!-- Main Content -->
+        <Frame x:Name="MainFrame" Grid.Column="1"/>
+        <!-- Label để hiển thị tên người dùng -->
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="30 60 0 0">
+            <Label x:Name="lblUsername" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,78 @@
+﻿<Page x:Class="AppWPF.pages.Dashboard"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AppWPF.pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      Title="Dashboard">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <WrapPanel Margin="10" Grid.Row="0" Grid.ColumnSpan="2">
+            <ComboBox Name="cboGroup" Width="120" SelectionChanged="cboGroup_SelectionChanged"/>
+            <Label Content="Search by phone" Margin="300 0 0 0"/>
+            <TextBox x:Name="txtPhone" Width="250"/>
+            <Button x:Name="btnSearchPhone" Content="Search" Width="80" Margin="5 0 0 0" Click="btnSearchPhone_Click"/>
+            <Button x:Name="btnClearn" Content="Clearn" Width="100" Margin="338 0 0 0" Background="Red" Click="btnClearn_Click"/>
+        </WrapPanel>
+        <DataGrid x:Name="dgData" AutoGenerateColumns="False" CanUserAddRows="False" Grid.Row="1" Margin="10" Grid.ColumnSpan="2" SelectionChanged="dgData_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Group Name" Binding="{Binding group}" Width="*"/>
+                <DataGridTextColumn Header="Contact Name" Binding="{Binding contact}" Width="*"/>
+                <DataGridTextColumn Header="Phone" Binding="{Binding phone}" Width="*"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding email}" Width="*"/>
+                <DataGridTextColumn Header="Birthday" Binding="{Binding birth}" Width="*"/>
+                <DataGridTextColumn Header="Added At" Binding="{Binding AddedAt}" Width="*"/>
+                <DataGridTemplateColumn Header="Xóa" Width="50">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnDeleted" Click="btnDeleteButton_Click">
+                                <iconPacks:PackIconMaterial Kind="TrashCan" Width="16" Height="16"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel HorizontalAlignment="Stretch" Grid.Row="2" Margin="320 30 10 10" Grid.ColumnSpan="2">
+            <WrapPanel Margin="0 10 0 10">
+                <Label Content="Group" VerticalAlignment="Center" Width="100" FontSize="17"/>
+                <TextBox x:Name="txtGroup" Width="250" Margin="30 0 0 0"/>
+            </WrapPanel>
+            <WrapPanel Margin="0 10 0 10">
+                <Label Content="Contact" VerticalAlignment="Center" Width="100" FontSize="17"/>
+                <TextBox x:Name="txtContact" Width="250" Margin="30 0 0 0"/>
+            </WrapPanel>
+            <WrapPanel Margin="0 10 0 10">
+                <Label Content="Phone" VerticalAlignment="Center" Width="100" FontSize="17"/>
+                <TextBox x:Name="txtPhoneDescription" Width="250" Margin="30 0 0 0"/>
+            </WrapPanel>
+            <WrapPanel Margin="0 10 0 10">
+                <Label Content="Email" VerticalAlignment="Center" Width="100" FontSize="17"/>
+                <TextBox x:Name="txtEmail" Width="250" Margin="30 0 0 0"/>
+            </WrapPanel>
+            <WrapPanel Margin="0 10 0 10">
+                <Label Content="Birth Day" VerticalAlignment="Center" Width="100" FontSize="17"/>
+                <TextBox x:Name="txtBirth" Width="250" Margin="30 0 0 0"/>
+            </WrapPanel>
+
+        </StackPanel>
+        <WrapPanel Grid.Row="3" Grid.ColumnSpan="2" Margin="0 -20 0 0">
+            <Button x:Name="btnAdd" Content="" Width="110" Height="35" Margin="320 0 30 0" Background="LightGreen"/>
+            <Button x:Name="btnUpdate" Content="Update" Width="110" Height="35" Margin="0 0 30 0" Background="LightGreen" Click="btnUpdate_Click"/>
+            <Button x:Name="btnReturn" Content="Return" Width="110" Height="35" Margin="0 0 0 0" Background="Red" Click="btnReturn_Click"/>
+        </WrapPanel>
+    </Grid>
+</Page>
